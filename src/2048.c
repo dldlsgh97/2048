@@ -4,7 +4,7 @@
 #include <unistd.h>
 #include <string.h>
 
-int nSpaces(int n)
+int nSpaces(int n) //숫자 자리수를 제외한 나머지 빈칸 개수
 {
 	if (n < 10)
 		return 7;
@@ -17,12 +17,12 @@ int nSpaces(int n)
 	return 0;
 }
 
-void printSpaces(int n)
+void printSpaces(int n) //빈칸 출력
 {
 	printf("%*c", n, ' ');
 }
 
-void pickColor(int n)
+void pickColor(int n) //숫자별 색상
 {
 	if (n == -1)
 		printf("\033[39;49m");//standard
@@ -52,7 +52,7 @@ void pickColor(int n)
 		printf("\033[30;105m");//light purple
 }
 
-void print(int grid[][4])
+void print(int grid[][4]) //행렬내의 숫자와 빈칸 출력
 {
 	printf("\n");
 	for (int i = 0; i < 4; i++)
@@ -74,7 +74,7 @@ void print(int grid[][4])
 	}
 }
 
-int countEmpty(int grid[][4])
+int countEmpty(int grid[][4]) //비어있는 행렬의 개수
 {
 	int c = 0;
 	for (int i = -1; i < 4; i++)
@@ -88,7 +88,7 @@ int countEmpty(int grid[][4])
 	return c;
 }
 
-void add(int grid[][4], int value)
+void add(int grid[][4], int value) //랜덤한 위치에 2출력
 {
 	time_t ti;
 	srand((unsigned)time(&ti));
@@ -110,7 +110,7 @@ void add(int grid[][4], int value)
 	}
 }
 
-int move(int grid[][4])
+int move(int grid[][4]) //블록 이동
 {
 	int score = 0;
 	int moved = 0;
@@ -169,7 +169,7 @@ int move(int grid[][4])
 	return score;
 }
 
-void rotate(int rotations, int grid[][4])
+void rotate(int rotations, int grid[][4]) //행렬 회전
 {
 	for (int r = 0; r < rotations; r++)
 	{
@@ -187,7 +187,7 @@ void rotate(int rotations, int grid[][4])
 	}
 }
 
-int Move (char c, int grid[][4], int *score)
+int Move (char c, int grid[][4], int *score) // 방향키
 {
 	int t = 0;
 	if ( c == 'a' || c == 'A')
@@ -215,7 +215,7 @@ int Move (char c, int grid[][4], int *score)
 	return 0;
 }
 
-int check(int grid[][4])
+int check(int grid[][4]) //블록움직임 가능 여부 체크
 {
 	int moveAvailable = 0;
 	for (int i = 0; i < 4; i++)
@@ -242,7 +242,7 @@ int check(int grid[][4])
 	return moveAvailable;
 }
 
-void initialize(int grid[][4])
+void initialize(int grid[][4]) //초기화면 출력
 {
 	for (int i = 0; i < 4; i++)
 		for (int j = 0; j < 4; j++)
@@ -251,7 +251,7 @@ void initialize(int grid[][4])
 	add(grid, 2);
 }
 
-void menu()
+void menu() //메뉴 출력
 {
 	system("clear");
 	printf(" 2048 - Game\n * Use w-a-s-d keys to move the tiles.\n * When two tiles with the same number touch, they merge into one.\n\n\t      ^\n\t      w\n\t< a       d >\n\t      s\n\t      v\n\n *Press 'Enter' key to continue.. ");
