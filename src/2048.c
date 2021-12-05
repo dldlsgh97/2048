@@ -262,8 +262,6 @@ void menu() //메뉴 출력
 void main()
 {
 	menu();
-	char SETTINGS_FILE[256]; 	
-
 	int grid[4][4];
 	int score = 0;
 	initialize(grid);
